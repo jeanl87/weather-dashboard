@@ -8,6 +8,7 @@ var history =document.querySelector("#search-history")
 
 //Current Weather 
 var requestUrl = "api.openweathermap.org/data/2.5/weather?q={cityname}&appid={4ca97a322a807dc626849e628544766c}"
+.then(function(response){
 fetch(requestUrl)
 .then(function(response) {
   return response.json();
@@ -28,3 +29,11 @@ fetch(requestUrl)
 .then(function(response) {
   return response.json();
 })
+.then(function(data) {
+    for (var i = 0; i < data.length; i++) {
+      var listItem = document.createElement('li');
+
+      listItem.textContent = data[i].html_url;
+      repoList.appendChild(listItem);
+    }
+  });
