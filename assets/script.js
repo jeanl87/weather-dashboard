@@ -7,8 +7,7 @@ var forecast =document.querySelector("#5-day-forecast")
 var history =document.querySelector("#search-history")
 
 //Current Weather 
-var requestUrl = "api.openweathermap.org/data/2.5/weather?q={cityname}&appid={4ca97a322a807dc626849e628544766c}"
-.then(function(response){
+var requestUrl = "api.openweathermap.org/data/2.5/weather?q={brooklyn}&appid=4ca97a322a807dc626849e628544766c";
 fetch(requestUrl)
 .then(function(response) {
   return response.json();
@@ -18,13 +17,13 @@ fetch(requestUrl)
       var listItem = document.createElement('li');
 
       listItem.textContent = data[i].html_url;
-      repoList.appendChild(listItem);
+      todaysWeather.appendChild(listItem);
     }
   });
 
 
 //5-day-forecast 
-var requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={4ca97a322a807dc626849e628544766c}";
+var requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=40.6782&lon=73.9442&exclude=hourly&appid=4ca97a322a807dc626849e628544766c";
 fetch(requestUrl)
 .then(function(response) {
   return response.json();
@@ -34,6 +33,5 @@ fetch(requestUrl)
       var listItem = document.createElement('li');
 
       listItem.textContent = data[i].html_url;
-      repoList.appendChild(listItem);
-    }
-  });
+      forecast.appendChild(listItem);
+    }):
